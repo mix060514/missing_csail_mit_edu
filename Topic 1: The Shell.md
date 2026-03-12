@@ -24,6 +24,21 @@ drwxr-xr-x   2 root root    4096 Apr 22  2024 boot/
 ```
 # In the command find ~/Downloads -type f -name "*.zip" -mtime +30, the *.zip is a “glob”. What is a glob? Create a test directory with some files and experiment with patterns like ls *.txt, ls file?.txt, and ls {a,b,c}.txt. See Pattern Matching in the Bash manual.
 
+What is a glob? 
+glob是一個路徑解析的bash程式，提供用表達式來pattern matching。
+
+glob vs grep
+glob是給路徑解析，grep是給檔案内部的搜尋。
+
+```
+mix060514@TWTPED2012044B:/tmp$ ls *.txt
+a.txt  b.txt  c.txt  d.txt  field.txt  file.txt  filea.txt  fileaa.txt
+mix060514@TWTPED2012044B:/tmp$ ls file?.txt
+filea.txt
+mix060514@TWTPED2012044B:/tmp$ ls {a,b,c}.txt
+a.txt  b.txt  c.txt
+```
+
 # What’s the difference between 'single quotes', "double quotes", and $'ANSI quotes'? Write a command that echoes a string containing a literal $, a !, and a newline character. See Quoting.
 
 # The shell has three standard streams: stdin (0), stdout (1), and stderr (2). Run ls /nonexistent /tmp and redirect stdout to one file and stderr to another. How would you redirect both to the same file? See Redirections.
