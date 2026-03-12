@@ -41,6 +41,29 @@ a.txt  b.txt  c.txt
 
 # What’s the difference between 'single quotes', "double quotes", and $'ANSI quotes'? Write a command that echoes a string containing a literal $, a !, and a newline character. See Quoting.
 
+' ' (單引號) 是絕對字面意義（什麼都不轉換）。
+
+" " (雙引號) 會保留變數展開的功能（會把 $VAR 變成實際的值）。
+
+$' ' (ANSI 引號) 專門用來處理控制字元（如 \n 換行、\t Tab）。
+
+引號的主要目的是「保護字串」
+1. 字串中包含空格
+2. 保護變數內容不被切割 (Word Splitting)
+3. 處理可能為空的變數
+4. 避免萬用字元 (Wildcards) 被提前展開
+5. 輸出具有特殊意義的符號
+
+```
+mix060514@TWTPED2012044B:/tmp$ echo 'This contains a literal $, a !, and a
+newline character.'
+This contains a literal $, a !, and a
+newline character.
+mix060514@TWTPED2012044B:/tmp$ echo $'This contains a literal $, a !, and a\nnewline character.'
+This contains a literal $, a !, and a
+newline character.
+```
+
 # The shell has three standard streams: stdin (0), stdout (1), and stderr (2). Run ls /nonexistent /tmp and redirect stdout to one file and stderr to another. How would you redirect both to the same file? See Redirections.
 
 # $? holds the exit status of the last command (0 = success). && runs the next command only if the previous succeeded; || runs it only if the previous failed. Write a one-liner that creates /tmp/mydir only if it doesn’t already exist. See Exit Status.
